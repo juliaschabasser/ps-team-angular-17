@@ -1,0 +1,19 @@
+<form [formGroup]="antragsForm" (ngSubmit)="submitForm()">
+    <input placeholder="IFA" formControlName="ifa">
+    <input placeholder="FSW-KundInnennummer" formControlName="fswkundinnennummer">
+    <input placeholder="Anrede" type="text" formControlName="anrede">
+
+    <ng-container formArrayName="personenLebensgemeinschaft">
+        <ng-container *ngFor="let personLebensgemeinschaft of personenLebensgemeinschaft.controls; let i = index">
+            <div [formGroup]="personLebensgemeinschaft">
+                <input placeholder="Familienname" formControlName="familienname">
+                <input placeholder="Vorname" formControlName="vorname">
+            </div>
+        </ng-container>
+    </ng-container>
+    <button (click)="addpersonenLebensgemeinschaft()">Person hinzufügen</button>
+
+    <button type="submit">Absenden</button>
+
+    <p *ngFor="let grad of (grade | async)">{{grad.name}}</p>
+</form>

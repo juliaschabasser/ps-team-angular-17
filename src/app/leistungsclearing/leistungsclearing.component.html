@@ -1,0 +1,5 @@
+<app-leistungsclearing-schritt-1 *ngIf="step === 1"></app-leistungsclearing-schritt-1>
+<app-leistungsclearing-schritt-2 *ngIf="step === 2"></app-leistungsclearing-schritt-2>
+
+<button [disabled]="step === lastStep" (click)="step = step + 1">Weiter</button>
+<button [disabled]="step === 1" (click)="step = step - 1">Zurück</button>
